@@ -19,6 +19,17 @@ vim.keymap.set("n", "<leader>na", function()
 	end)
 end, { desc = "Create new inbox file" })
 
+vim.keymap.set("n", "<leader>ns", function()
+	local scratchpad_path = vim.fn.expand("~/repos/second-brain/inbox/scratchpad.md")
+	local file = io.open(scratchpad_path, "r")
+	if file then
+		file:close()
+		vim.cmd("edit " .. vim.fn.fnameescape(scratchpad_path))
+	else
+		vim.notify("Could not find scratchpad file at  " .. scratchpad_path, vim.log.levels.ERROR)
+	end
+end, { desc = "Go to Notes Scratchpad" })
+
 vim.keymap.set("n", "gl", function()
 	vim.diagnostic.open_float()
 end, { desc = "Show diagnostics in floating window" })

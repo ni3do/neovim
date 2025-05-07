@@ -4,7 +4,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-			nix = { "alejandra" },
+			nix = { "nil_ls" },
 			tex = { "tex-fmt" },
 		},
 		formatters = {

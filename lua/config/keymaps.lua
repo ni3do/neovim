@@ -1,7 +1,13 @@
+--------------------------------
+-- Utilities Keymaps
+--------------------------------
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all" })
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file (normal mode)" })
 vim.keymap.set("i", "<C-s>", "<ESC><cmd>w<CR>", { desc = "Save file (insert mode)" })
 
+--------------------------------
+-- Note Taking Keymaps
+--------------------------------
 vim.keymap.set("n", "<leader>na", function()
 	vim.ui.input({ prompt = "Enter new file name: " }, function(input)
 		if input and input ~= "" then
@@ -40,11 +46,13 @@ vim.keymap.set("n", "<leader>cf", function()
 	})
 end, { desc = "Format current file with fallback" })
 
+--------------------------------
 -- Harpoon Keymaps
+--------------------------------
 local harpoon = require("harpoon")
 harpoon:setup()
 
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>m", function()
 	harpoon:list():add()
 end, { desc = "Add file to Harpoon list" })
 
@@ -56,27 +64,29 @@ vim.keymap.set("n", "<C-a>", function()
 	harpoon:list():select(1)
 end, { desc = "Harpoon: Go to file 1" })
 
-vim.keymap.set("n", "<C-s>", function()
+vim.keymap.set("n", "<C-d>", function()
 	harpoon:list():select(2)
 end, { desc = "Harpoon: Go to file 2" })
 
-vim.keymap.set("n", "<C-d>", function()
+vim.keymap.set("n", "<C-f>", function()
 	harpoon:list():select(3)
 end, { desc = "Harpoon: Go to file 3" })
 
-vim.keymap.set("n", "<C-f>", function()
+vim.keymap.set("n", "<C-g>", function()
 	harpoon:list():select(4)
 end, { desc = "Harpoon: Go to file 4" })
 
-vim.keymap.set("n", "<C-S-P>", function()
-	harpoon:list():prev()
-end, { desc = "Harpoon: Go to previous file" })
+-- vim.keymap.set("n", "<C-S-P>", function()
+-- 	harpoon:list():prev()
+-- end, { desc = "Harpoon: Go to previous file" })
+--
+-- vim.keymap.set("n", "<C-S-N>", function()
+-- 	harpoon:list():next()
+-- end, { desc = "Harpoon: Go to next file" })
 
-vim.keymap.set("n", "<C-S-N>", function()
-	harpoon:list():next()
-end, { desc = "Harpoon: Go to next file" })
-
+--------------------------------
 -- Misc Keymaps
+--------------------------------
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
